@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 10:32:38 by avillar           #+#    #+#             */
-/*   Updated: 2022/09/06 12:58:31 by avillar          ###   ########.fr       */
+/*   Updated: 2022/09/07 09:58:34 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ t_data	*init_structd(int argc , char **argv)
 	data->ttdie = ft_atoi(argv[2]);
 	data->tteat = ft_atoi(argv[3]);
 	data->ttsleep = ft_atoi(argv[4]);
-	data->stop = 0;
 	if (argc == 6)
 		data->nte = ft_atoi(argv[5]);
 	else
 		data->nte = -1;
 	data->died = 0;
+	data->stop = 0;
 	data->order = 2;
 	pthread_mutex_init(&data->lock, NULL);
 	return (data);
@@ -49,7 +49,7 @@ t_philo	*make_philo(t_data *data)
 	philo->next_philo = NULL;
 	philo->data = data;
 	philo->doing = 0;
-	philo->lm = 0;
+	philo->lm = -1;
 	philo->nte = data->nte;
 	philo->et = 0;
 	pthread_mutex_init(&philo->l_fork, NULL);

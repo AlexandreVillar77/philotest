@@ -6,7 +6,7 @@
 /*   By: avillar <avillar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 11:40:48 by avillar           #+#    #+#             */
-/*   Updated: 2022/09/06 13:22:16 by avillar          ###   ########.fr       */
+/*   Updated: 2022/09/07 13:26:50 by avillar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ struct s_philo
 	int					id;
 	int					status;
 	int					doing;
-	unsigned long long	lm;
+	long long			lm;
 	int					nte;
 	int					et;
 	pthread_t			thread;
@@ -50,13 +50,13 @@ struct s_data
 {
 	t_philo				*first_philo;
 	pthread_mutex_t		lock;
-	int					stop;
 	int					n_philo;
 	int					tteat;
 	int					ttdie;
 	int					ttsleep;
 	struct timeval		tatstart;
 	int					died;
+	int					stop;
 	int					nte;
 	int					order;
 };
@@ -90,10 +90,13 @@ int						ft_atoi(const char *str);
 
 //calcul.c
 int						check_for_die(int i, t_philo *philo);
+int						check_for_die2(int i, t_philo *tmp);
 int						ft_sleep(int i);
 int						ft_strlen(char *str);
 unsigned long long int	calcul_time(struct timeval atstart);
 int						cee(t_philo *tmp);
+int						die_wthink(int i, t_philo *tmp);
+int						die_wthink2(int i, t_philo *tmp);
 
 //ft_putchar.c
 void					ft_putnbr_fd(int n, int fd);
